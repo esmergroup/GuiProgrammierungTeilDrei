@@ -1,0 +1,44 @@
+package java2enterprise;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.Random;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ButtonTestEins extends JFrame implements ActionListener {
+	
+	private Container c;
+	private JButton button;
+	
+	public ButtonTestEins() {
+		super("Button");	// Titel des Fensters
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		c = getContentPane();
+		c.setLayout(new FlowLayout());
+		
+		
+		Icon icon = new ImageIcon(getClass().getResource("Jupiter.gif"));
+		button = new JButton("Hier klicken", icon);
+		button.setToolTipText("Test");
+		button.addActionListener(this);
+		c.add(button);
+		setSize(300, 200);
+		setVisible(true);
+		setResizable(false);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		Random random = new Random();
+		c.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+	}
+	
+	public static void main(String[] args) {
+		ButtonTestEins laufen = new ButtonTestEins();
+	}
+}
